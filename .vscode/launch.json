@@ -1,0 +1,50 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Day00",
+            "request": "launch",
+            "mainClass": "com.example.kdot.aoc23.Day00",
+            "projectName": "aoc23"
+        },
+        {
+            "type": "java",
+            "name": "Day01",
+            "request": "launch",
+            "mainClass": "com.example.kdot.aoc23.Day01",
+            "projectName": "aoc23"
+        },
+        {
+            "type": "java",
+            "name": "Day02",
+            "request": "launch",
+            "mainClass": "com.example.kdot.aoc23.Day02",
+            "projectName": "aoc23"
+        },
+        {
+            "type": "java",
+            "name": "Day03",
+            "request": "launch",
+            "mainClass": "com.example.kdot.aoc23.Day03",
+            "projectName": "aoc23"
+        },
+        {
+            "type": "java",
+            "name": "Day04",
+            "request": "launch",
+            "mainClass": "com.example.kdot.aoc23.Day04",
+            "projectName": "aoc23"
+        }
+    ]
+}
