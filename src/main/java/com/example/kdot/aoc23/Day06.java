@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 public class Day06 {
 
-    static Logger log = Logger.getLogger(Day00.class.getName());
+    static Logger log = Logger.getLogger(Day06.class.getName());
 
     public static void main(String[] args) throws IOException, URISyntaxException {
         var d = new Day00("day06.input.txt");
