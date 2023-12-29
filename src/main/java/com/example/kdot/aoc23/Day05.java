@@ -19,8 +19,7 @@ public class Day05 {
         var d = new Day05("day05.input.txt");
         var input = d.readInput();
         log.log(Level.INFO, "Result Part01 {0}", new Object[] { d.calculatePart01(input) });
-        // log.log(Level.INFO, "Result Part02 {0}", new
-        // Object[]{d.calculatePart02(input)});
+        log.log(Level.INFO, "Result Part02 {0}", new Object[] { d.calculatePart02(input) });
     }
 
     private final List<String> rawInput;
@@ -81,7 +80,6 @@ public class Day05 {
 
     int calculatePart01(Day05.Model input) {
         var nearestLoc = input.seeds.stream() //
-                .map(x -> { log.info("s1 "+x); return x;}) //
                 .map(s -> input.seed2soil.getDestination(s))
                 .map(soil -> input.soil2fertilizer.getDestination(soil))
                 .map(fert -> input.fertilizer2water.getDestination(fert))
@@ -89,13 +87,36 @@ public class Day05 {
                 .map(light -> input.light2temperature.getDestination(light))
                 .map(temp -> input.temperature2huminidy.getDestination(temp))
                 .map(humidity -> input.huminidy2location.getDestination(humidity)) //
-                .map(x -> { log.info(" "+x); return x;}) //
                 .mapToLong(i -> i).min();
         return (int) nearestLoc.orElse(-1);
     }
 
     int calculatePart02(Day05.Model input) {
-        return 0;
+        // 'paging' to prevent long execution on the one hand and out of memory on the other
+        List<Long> seedsNew = new ArrayList<>();
+        long nearest = Long.MAX_VALUE;
+        for (int i = 0; i < input.seeds.size(); i += 2) {
+            for (long j = input.seeds.get(i); j < input.seeds.get(i) + input.seeds.get(i + 1); j++) {
+                seedsNew.add(i + j);
+                if (seedsNew.size() >= 10000) {
+                    long loc = Arrays.asList(Long.valueOf(i + j)).stream() //
+                            .map(s -> input.seed2soil.getDestination(s))
+                            .map(soil -> input.soil2fertilizer.getDestination(soil))
+                            .map(fert -> input.fertilizer2water.getDestination(fert))
+                            .map(water -> input.water2light.getDestination(water))
+                            .map(light -> input.light2temperature.getDestination(light))
+                            .map(temp -> input.temperature2huminidy.getDestination(temp))
+                            .map(humidity -> input.huminidy2location.getDestination(humidity)) //
+                            .mapToLong(l -> l).min().orElse(Long.MAX_VALUE);
+                    if (nearest > loc) {
+                        nearest = loc;
+                    }
+                    seedsNew.clear();
+                }
+            }
+        }
+
+        return (int) nearest;
     }
 
     class Model {
@@ -118,14 +139,10 @@ public class Day05 {
             configs.add(new Config(sourceRangeStart, destRangeStart, rangeLenght));
         }
 
-        // int getSource(int destination) {
-        // return specialMappings.containsValue(destination) ? : destination;
-        // }
-
         long getDestination(long source) {
             for (Config config : configs) {
-                if (config.sourceRangeStart <= source && source < config.sourceRangeStart+config.rangeLenght) {
-                    return config.destRangeStart+source-config.sourceRangeStart;
+                if (config.sourceRangeStart <= source && source < config.sourceRangeStart + config.rangeLenght) {
+                    return config.destRangeStart + source - config.sourceRangeStart;
                 }
             }
             return source;
@@ -144,7 +161,6 @@ public class Day05 {
             this.rangeLenght = rangeLenght;
         }
 
-        
     }
 
 }

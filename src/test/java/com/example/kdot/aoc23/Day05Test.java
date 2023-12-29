@@ -23,9 +23,9 @@ public class Day05Test {
 
     @Test
     public void testCalculatePart02() {
-        //var target = new Day00("day00.part02.testInput.txt");
-        //var input = target.readInput();
-       // Assertions.assertEquals(00,target.calculatePart02(target.readInput()));
+        //reuse test input from part 01 by intend
+        var target = new Day05("day05.part01.testInput.txt");
+        Assertions.assertEquals(46,target.calculatePart02(target.readInput()));
     }
 
 }
