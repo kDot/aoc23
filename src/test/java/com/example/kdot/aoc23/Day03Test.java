@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-public class Day03Test {
+class Day03Test {
 
     @Test
-    public void testReadDOMPart01() throws IOException, URISyntaxException {
+    void testReadDOMPart01() throws IOException, URISyntaxException {
         Day03 target = new Day03("day03.part01.testInput.txt");
         var result = target.readInput();
         Assertions.assertEquals(10, result.data.length);
@@ -19,7 +19,7 @@ public class Day03Test {
     }
 
     @Test
-    public void testHasAnyAdjacentSymbol() throws IOException, URISyntaxException {
+    void testHasAnyAdjacentSymbol() throws IOException, URISyntaxException {
         Day03 target = new Day03("day03.part01.testInput.txt");
         Day03.Model m = new Day03.Model();
         m.data= new String[][]{{".", ".", "."}, {".", ".", "."}, {".", ".", "."}};
@@ -42,7 +42,7 @@ public class Day03Test {
     }
 
     @Test
-    public void testPart01() throws IOException, URISyntaxException {
+    void testPart01() throws IOException, URISyntaxException {
         Day03 target = new Day03("day03.part01.testInput.txt");
         Assertions.assertEquals(4361, target.calculatePart01(target.readInput()));
 
@@ -52,7 +52,7 @@ public class Day03Test {
     }
 
     @Test
-    public void testPart02() throws IOException, URISyntaxException {
+    void testPart02() throws IOException, URISyntaxException {
         Day03 target = new Day03("day03.part02.testInput.txt");
         Assertions.assertEquals(467835, target.calculatePart02(target.readInput()));
     }

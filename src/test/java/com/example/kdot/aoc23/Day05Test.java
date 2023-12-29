@@ -3,10 +3,10 @@ package com.example.kdot.aoc23;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class Day05Test {
+class Day05Test {
 
     @Test
-    public void testReadInput() {
+    void testReadInput() {
         var target = new Day05("day05.part01.testInput.txt");
         var result = target.readInput();
 
@@ -16,13 +16,13 @@ public class Day05Test {
     }
 
     @Test
-    public void testCalculatePart01() {
+    void testCalculatePart01() {
         var target = new Day05("day05.part01.testInput.txt");
         Assertions.assertEquals(35,target.calculatePart01(target.readInput()));
     }
 
     @Test
-    public void testCalculatePart02() {
+    void testCalculatePart02() {
         //reuse test input from part 01 by intend
         var target = new Day05("day05.part01.testInput.txt");
         Assertions.assertEquals(46,target.calculatePart02(target.readInput()));
