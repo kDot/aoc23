@@ -16,7 +16,7 @@ public class Day06 {
     static Logger log = Logger.getLogger(Day06.class.getName());
 
     public static void main(String[] args) throws IOException, URISyntaxException {
-        var d = new Day00("day06.input.txt");
+        var d = new Day06("day06.input.txt");
         var input = d.readInput();
         log.log(Level.INFO, "Result Part01 {0}", new Object[] { d.calculatePart01(input) });
         // log.log(Level.INFO, "Result Part02 {0}", new
@@ -59,7 +59,17 @@ public class Day06 {
     }
 
     int calculatePart01(Day06.Model input) {
-        return 0;
+        List<Integer> numberOfRecordBreakingWays = new ArrayList<>();
+        input.races.forEach(race -> {
+            int recordBreakingCount =0;
+            for (int i =0 ; i< race.duration;++i) {
+                if (race.record< i*(race.duration-i)) {
+                    recordBreakingCount++;
+                }
+            }
+            numberOfRecordBreakingWays.add(recordBreakingCount);
+        });
+        return numberOfRecordBreakingWays.stream().mapToInt(i -> i).reduce(1, (a,b) -> a*b);
     }
 
     int calculatePart02(Day06.Model input) {

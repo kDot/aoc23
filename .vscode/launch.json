@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Day06",
+            "request": "launch",
+            "mainClass": "com.example.kdot.aoc23.Day06",
+            "projectName": "aoc23"
+        },
+        {
+            "type": "java",
             "name": "Day05",
             "request": "launch",
             "mainClass": "com.example.kdot.aoc23.Day05",
