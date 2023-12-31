@@ -22,9 +22,8 @@ class Day06Test {
 
     @Test
     void testCalculatePart02() {
-        //var target = new Day00("day00.part02.testInput.txt");
-        //var input = target.readInput();
-       // Assertions.assertEquals(00,target.calculatePart02(target.readInput()));
+        var target = new Day06("day06.part01.testInput.txt");
+        Assertions.assertEquals(71503,target.calculatePart02(target.readInput()));
     }
 
 }
